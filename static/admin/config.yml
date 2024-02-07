@@ -18,12 +18,12 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: 'Blog Name & Title add', name: 'title', widget: 'string' }
-      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' }
-      - { label: 'date', name: 'date', widget: 'date' }
-      - { label: 'updated', name: 'updated', widget: 'date' }
+      - { label: 'date', name: 'date', widget: 'datetime' }
+      - { label: 'updated', name: 'updated', widget: 'datetime' }
+      - { label: 'Categories', name: 'categories', widget: 'list', options: ['sveltekit', 'markdown', 'svelte'] }
       - { label: 'coverImageo', name: 'coverImage', widget: 'image' }
-      - { label: 'coverWidth', name: 'coverWidth', widget: 'string' }
-      - { label: 'coverHeight', name: 'coverHeight', widget: 'string' }
+      - { label: 'coverWidth', name: 'coverWidth', widget: 'number' }
+      - { label: 'coverHeight', name: 'coverHeight', widget: 'number' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
       - { label: 'excerpt', name: 'excerpt', widget: 'string' }
 
