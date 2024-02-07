@@ -1,6 +1,12 @@
 ---
 title: Multiplier Partners with Triple-A to Enable Payroll Processing and
   Freelancer Payments in Crypto
+date: "2023-04-28"
+updated: "2023-04-28"
+categories:
+  - "sveltekit"
+  - "markdown"
+  - "svelte"
 layout: blog
 coverImage: /images/jefferson-santos-fCEJGBzAkrU-unsplash.jpg
 coverWidth: "16"
