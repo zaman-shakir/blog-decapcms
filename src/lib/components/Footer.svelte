@@ -4,9 +4,9 @@
 </script>
 
 <footer>
-	<MainNav />
+	<!-- <MainNav /> -->
 
-	<nav>
+	<!-- <nav>
 		<ul>
 			<li>
 				<a href="/api/rss.xml" data-sveltekit-reload>RSS</a>
@@ -15,7 +15,7 @@
 				<a href="/">Home</a>
 			</li>
 		</ul>
-	</nav>
+	</nav> -->
 
-	<p>&copy;{new Date().getFullYear()} {siteAuthor}</p>
+	<!-- <p>&copy;{new Date().getFullYear()} {siteAuthor}</p> -->
 </footer>
