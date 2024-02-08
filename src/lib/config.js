@@ -5,8 +5,8 @@
  * PLEASE BE SURE TO UPDATE THEM ALL! Thank you!
  **/
 
-export const siteTitle = 'Pay & get paid in BTC without touching Crypto'
-export const siteDescription = 'Built with the SvelteKit Static Blog Starter'
+export const siteTitle = 'Triple-A '
+export const siteDescription = 'Pay & get paid in BTC without touching Crypto'
 export const siteURL = 'example.com'
 export const siteLink = 'https://github.com/josh-collinsworth/sveltekit-blog-starter'
 export const siteAuthor = '- find and change this text in src/lib/config.js'
