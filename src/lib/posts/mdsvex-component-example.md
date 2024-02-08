@@ -3,9 +3,8 @@ title: This is why you should start utilizing USDT payments
 date: 2023-04-28
 updated: 2023-04-28
 categories:
-  - sveltekit
-  - markdown
-  - svelte
+  - Crypto Insights
+  - Triple-A
 coverImage: /images/frame-4-min-1536x864.png
 coverWidth: 16
 coverHeight: 9
