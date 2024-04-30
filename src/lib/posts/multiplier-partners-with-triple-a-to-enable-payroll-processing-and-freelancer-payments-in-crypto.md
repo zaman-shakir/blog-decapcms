@@ -1,5 +1,5 @@
 ---
-title: Multiplier Partners with Triple-A to Enable Payroll Processing and
+title: Multiplier all Partners with Triple-A to Enable Payroll Processing and
   Freelancer Payments in Crypto
 date: 2024-02-07T11:22:26.478Z
 updated: 2024-02-07T11:22:27.712Z
