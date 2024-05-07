@@ -240,3 +240,4 @@ export async function GET({ url, locals }) {
     throw error(505, 'Internal Server Error');
   }
 }
+*/
