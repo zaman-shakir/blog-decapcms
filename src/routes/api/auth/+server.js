@@ -1,3 +1,68 @@
+import { json } from '@sveltejs/kit';
+
+export async function GET({ request }) {
+    console.log("IN GET");
+    try {
+        const client_id = 'Ov23lixAa7I0xBJ7v86Q';
+        const url = new URL(request.url);
+        const redirectUrl = new URL('https://github.com/login/oauth/authorize');
+        redirectUrl.searchParams.set('client_id', client_id);
+        redirectUrl.searchParams.set('redirect_uri', url.origin + '/api/callback');
+        redirectUrl.searchParams.set('scope', 'repo user');
+        redirectUrl.searchParams.set('state', crypto.getRandomValues(new Uint8Array(12)).join(''));
+
+        return Response.redirect(redirectUrl.href, 301);
+    } catch (error) {
+        console.error('Error in GET handler:', error);
+        return new Response('Server Error', {
+            status: 500,
+        });
+    }
+}
+export async function POST() {
+    const url = 'https://api.triple-a.io/api/v2/oauth/token';
+    const data = new URLSearchParams({
+        client_id: 'oacid-cl803xkje24086dis0nnlaome',
+        client_secret: '6706292fad3d767bf7cb67056284efe543293af2b960865692a8fe793ac5ff43',
+        grant_type: 'client_credentials'
+    });
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: data
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to retrieve token');
+        }
+
+        const result = await response.json();
+
+        return json({
+            success: true,
+            accessToken: result.access_token,
+            tokenExpiry: result.expires_in
+        });
+    } catch (error) {
+        console.error('Error fetching new access token:', error);
+
+        return json({
+            success: false,
+            message: 'Failed to retrieve access token',
+            error: error.message
+        }, {
+            status: 500 // Optional: setting HTTP status code for error responses
+        });
+    }
+}
+
+
+
 // export async function onRequest(context) {
 //     const {
 //         request, // same as existing Worker API
@@ -29,6 +94,8 @@
 //         });
 //     }
 // }
+
+/*
 // src/routes/api/auth/+server.js
 import { error, redirect } from '@sveltejs/kit';
 
@@ -58,3 +125,5 @@ export async function GET({ url, locals }) {
     throw error(500, e.message);
   }
 }
+*/
+
