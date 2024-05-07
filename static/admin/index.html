@@ -5,62 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>Content Manager</title>
+  <link rel="stylesheet" href="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.css">
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
+  <style>
+    .two-column {
+      display: flex;
+      justify-content: space-between;
+    }
+    .column {
+      width: 48%;
+    }
+  </style>
 </head>
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
+    // Define the custom CategoriesControl widget with a two-column structure
     var CategoriesControl = createClass({
-  handleChange: function(e) {
-    const separator = this.props.field.get('separator', ', ')
-    this.props.onChange(e.target.value.split(separator).map((e) => e.trim()));
-  },
+      handleChange: function(e) {
+        const separator = this.props.field.get('separator', ', ');
+        this.props.onChange(e.target.value.split(separator).map((item) => item.trim()));
+      },
 
-  render: function() {
-    const separator = this.props.field.get('separator', ', ');
-    var value = this.props.value;
-    return h('input', {
-      id: this.props.forID,
-      className: this.props.classNameWrapper,
-      type: 'text',
-      value: value ? value.join(separator) : '',
-      onChange: this.handleChange,
+      render: function() {
+        const separator = this.props.field.get('separator', ', ');
+        const value = this.props.value || [];
+        const joinedValue = value.join(separator);
+
+        return h('div', { className: 'two-column' },
+          // First column
+          h('div', { className: 'column' },
+            h('input', {
+              id: this.props.forID,
+              className: this.props.classNameWrapper,
+              type: 'text',
+              value: joinedValue,
+              onChange: this.handleChange,
+            }),
+            h('p', {}, "This is the first column with a text input.")
+          ),
+          // Second column
+          h('div', { className: 'column' },
+            h('p', {}, "This is the second column with additional content."),
+            h('img', { src: 'https://via.placeholder.com/150', alt: 'Placeholder Image' }) // Example image
+          )
+        );
+      },
     });
-  },
-});
-var CategoriesPreview = createClass({
-  render: function() {
-    return h('ul', {},
-      this.props.value.map(function(val, index) {
-        return h('li', {key: index}, val);
-      })
-    );
-  }
-});
 
-var schema = {
-  properties: {
-    separator: { type: 'string' },
-  },
-}
-
-CMS.registerWidget('categories', CategoriesControl, CategoriesPreview, schema);
-
-
-
-
-// ----------------------------------------------------------------
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
+    // Define the CategoriesPreview widget to display the value in a list format
+    var CategoriesPreview = createClass({
+      render: function() {
+        const value = this.props.value || [];
+        return h('ul', {},
+          value.map(function(val, index) {
+            return h('li', { key: index }, val);
+          })
+        );
+      },
     });
-  }
-</script>
+
+    // Register the custom widget with the CMS
+    var schema = {
+      properties: {
+        separator: { type: 'string' },
+      },
+    };
+
+    CMS.registerWidget('categories', CategoriesControl, CategoriesPreview, schema);
+
+    // Set up Netlify Identity initialization and login behavior
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
