@@ -1,9 +1,15 @@
-# Branch to update (optional; defaults to master)
 backend:
-  name: git-gateway # Replace 'github' with your preferred backend provider
+  name: github
+  repo: zaman-shakir/blog-decapcms
   branch: main # Branch to update (optional; defaults to master)
-
+  base_url: https://blog-decapcms-new.pages.dev/
+  auth_endpoint: /api/auth
 # This line should *not* be indented
+# # Branch to update (optional; defaults to master)
+# backend:
+#   name: git-gateway # Replace 'github' with your preferred backend provider
+#   branch: main # Branch to update (optional; defaults to master)
+
 publish_mode: editorial_workflow
 
 # These lines should *not* be indented
