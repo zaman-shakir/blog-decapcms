@@ -30,7 +30,11 @@
   render: function() {
     const separator = this.props.field.get('separator', ', ');
     var value = this.props.value;
-    return (<div><input onChange={()=>this.handleChange()} /></div>);
+    return h("div", {
+        children: h("input", {
+            onChange: () => this.handleChange()
+        })
+    });
     // h('input', {
     //   id: this.props.forID,
     //   className: this.props.classNameWrapper,
