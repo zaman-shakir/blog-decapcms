@@ -20,7 +20,7 @@ collections:
       - { label: 'Blog Name & Title add', name: 'title', widget: 'string' }
       - { label: 'date', name: 'date', widget: 'datetime' }
       - { label: 'updated', name: 'updated', widget: 'datetime' }
-        - name: categories2
+      - name: categories2
         label: Categories
         widget: categories
         separator: __
