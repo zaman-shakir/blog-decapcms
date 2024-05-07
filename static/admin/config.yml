@@ -18,7 +18,10 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: 'Blog Name & Title add', name: 'title', widget: 'string' }
-      - { label: 'Color Picker', name: 'colorPicker', widget: 'colorPicker' }
+      - name: categories
+        label: Categories
+        widget: categories
+        separator: __
       - { label: 'date', name: 'date', widget: 'datetime' }
       - { label: 'updated', name: 'updated', widget: 'datetime' }
       - {
