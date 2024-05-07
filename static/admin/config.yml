@@ -21,7 +21,7 @@ collections:
       - { label: 'date', name: 'date', widget: 'datetime' }
       - { label: 'updated', name: 'updated', widget: 'datetime' }
       - name: categories
-        label: Categories
+        label: Categories Custom Widget
         widget: categories
         separator: __
 
