@@ -78,6 +78,66 @@ export async function POST({ request, params, url }) {
     });
   }
 }
+// Define the GET function
+export async function GET({ request, params, url }) {
+  // Get environment variables from SvelteKit
+  const client_id = 'Ov23lixAa7I0xBJ7v86Q'; // using VITE_ prefix for public env vars
+  const client_secret = 'b970ec34dee9630d164ae5346e700c833eb9a569';
+
+  try {
+    // Extract the code from the URL query parameters
+    const code = url.searchParams.get('code');
+
+    // Fetch the access token from GitHub
+    const response = await fetch(
+      'https://github.com/login/oauth/access_token',
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'user-agent': 'sveltekit-github-oauth',
+          'accept': 'application/json',
+        },
+        body: JSON.stringify({ client_id, client_secret, code }),
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.error) {
+      return text(renderBody('error', result), {
+        headers: {
+          'content-type': 'text/html;charset=UTF-8',
+        },
+        status: 401,
+      });
+    }
+
+    // Successfully got the token
+    const token = result.access_token;
+    const provider = 'github';
+    const responseBody = renderBody('success', {
+      token,
+      provider,
+    });
+
+    return text(responseBody, {
+      headers: {
+        'content-type': 'text/html;charset=UTF-8',
+      },
+      status: 200,
+    });
+
+  } catch (error) {
+    console.error('Error in OAuth flow:', error);
+    return text('Server Error', {
+      headers: {
+        'content-type': 'text/html;charset=UTF-8',
+      },
+      status: 500,
+    });
+  }
+}
 
 // function renderBody(status, content) {
 //     const html = `
