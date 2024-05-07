@@ -30,53 +30,43 @@
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
     // Define the custom CategoriesControl widget with a two-column structure
-// The control component for the two-column widget
-var TwoColumnControl = createClass({
-  render: function() {
-    // Get the content for each column from the props
+    const TwoColumnControl = createClass({
+  render() {
     const { value = {}, onChange, forID } = this.props;
 
     const handleChange = (column, newValue) => {
-      // When the value of one column changes, update the overall value object
       onChange({ ...value, [column]: newValue });
     };
 
     return h('div', { className: 'two-column-widget' },
-      // First column
       h('div', { className: 'column' },
         h('p', {}, 'First Column Content:'),
-        CMS.getWidget('markdown').control({ // Example for rich text
+        CMS.getWidget('markdown').control({
           value: value.column1,
           onChange: (v) => handleChange('column1', v),
           forID: `${forID}-col1`,
-          classNameWrapper: 'rich-text',
         })
       ),
-      // Second column
       h('div', { className: 'column' },
         h('p', {}, 'Second Column Content:'),
-        CMS.getWidget('image').control({ // Example for image
+        CMS.getWidget('image').control({
           value: value.column2,
           onChange: (v) => handleChange('column2', v),
           forID: `${forID}-col2`,
-          classNameWrapper: 'image-widget',
         })
       )
     );
   },
 });
 
-// The preview component for the two-column widget
-var TwoColumnPreview = createClass({
-  render: function() {
+const TwoColumnPreview = createClass({
+  render() {
     const { value = {} } = this.props;
     return h('div', { className: 'two-column-widget-preview' },
       h('div', { className: 'column' },
-        h('p', {}, 'First Column Preview:'),
         CMS.getWidget('markdown').preview({ value: value.column1 })
       ),
       h('div', { className: 'column' },
-        h('p', {}, 'Second Column Preview:'),
         CMS.getWidget('image').preview({ value: value.column2 })
       )
     );
@@ -84,6 +74,7 @@ var TwoColumnPreview = createClass({
 });
 
 CMS.registerWidget('two-column', TwoColumnControl, TwoColumnPreview);
+
     // Set up Netlify Identity initialization and login behavior
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
