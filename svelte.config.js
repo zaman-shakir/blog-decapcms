@@ -23,7 +23,16 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			// See below for an explanation of these options
+			routes: {
+				include: ['/*'],
+				exclude: ['<all>']
+			},
+	  platformProxy: {
+		persist: './your-custom-path'
+	  }
+		}),
     prerender: {
       entries: [
         '*',
