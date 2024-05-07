@@ -20,94 +20,7 @@
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script>
-    var CategoriesControl = createClass({
-  handleChange: function(e) {
-    const separator = this.props.field.get('separator', ', ')
-    this.props.onChange(e.target.value.split(separator).map((e) => e.trim()));
-  },
-
-  render: function() {
-    const separator = this.props.field.get('separator', ', ');
-    var value = this.props.value;
-    return h("div", {
-        children: h("input", {
-            onChange: this.handleChange
-        })
-    });
-    // h('input', {
-    //   id: this.props.forID,
-    //   className: this.props.classNameWrapper,
-    //   type: 'text',
-    //   value: value ? value.join(separator) : '',
-    //   onChange: this.handleChange,
-    // });
-  },
-});
-
-var CategoriesPreview = createClass({
-  render: function() {
-    return h('ul', {},
-      this.props.value.map(function(val, index) {
-        return h('li', {key: index}, val);
-      })
-    );
-  }
-});
-
-var schema = {
-  properties: {
-    separator: { type: 'string' },
-  },
-}
-
-CMS.registerWidget('categories', CategoriesControl, CategoriesPreview, schema);
-    // Custom Two-Column Widget
-    // const TwoColumnControl = createClass({
-    //   render() {
-    //     const { value = {}, onChange, forID } = this.props;
-
-    //     const handleChange = (column, newValue) => {
-    //       onChange({ ...value, [column]: newValue });
-    //     };
-
-    //     return h('div', { className: 'two-column-widget' },
-    //       h('div', { className: 'column' },
-    //         CMS.getWidget('markdown').control({
-    //           value: value.column1,
-    //           onChange: (v) => handleChange('column1', v),
-    //           forID: `${forID}-col1`,
-    //         })
-    //       ),
-    //       h('div', { className: 'column' },
-    //         CMS.getWidget('image').control({
-    //           value: value.column2,
-    //           onChange: (v) => handleChange('column2', v),
-    //           forID: `${forID}-col2`,
-    //         })
-    //       )
-    //     );
-    //   },
-    // });
-
-    // const TwoColumnPreview = createClass({
-    //   render() {
-    //     const { value = {} } = this.props;
-    //     return h('div', { className: 'two-column-widget-preview' },
-    //       h('div', { className: 'column' },
-    //         CMS.getWidget('markdown').preview({ value: value.column1 })
-    //       ),
-    //       h('div', { className: 'column' },
-    //         CMS.getWidget('image').preview({ value: value.column2 })
-    //       )
-    //     );
-    //   },
-    // });
-
-    // // Register the Two-Column Widget
-    // CMS.registerWidget('two-column', TwoColumnControl, TwoColumnPreview);
-
-    // Netlify Identity Initialization
+  <!-- <script>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
@@ -117,6 +30,6 @@ CMS.registerWidget('categories', CategoriesControl, CategoriesPreview, schema);
         }
       });
     }
-  </script>
+  </script> -->
 </body>
 </html>
