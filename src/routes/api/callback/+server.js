@@ -98,10 +98,15 @@ function renderBody(status, content) {
 
 export async function GET({ url, locals }) {
   // Retrieve OAuth client ID and secret from environment variables
-  const client_id = env.GITHUB_CLIENT_ID;
-  const client_secret = env.GITHUB_CLIENT_SECRET;
+  //const client_id = env.GITHUB_CLIENT_ID;
+  const client_id = "Ov23lixAa7I0xBJ7v86Q";
+  //const client_secret = env.GITHUB_CLIENT_SECRET;
+  const client_secret = "b970ec34dee9630d164ae5346e700c833eb9a569";
 
   if (!client_id || !client_secret) {
+    alert(
+        "Invalid OAuth client"
+    );
     throw error(500, 'Environment variables for GitHub OAuth are not set');
   }
 
