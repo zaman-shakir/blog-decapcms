@@ -9,7 +9,7 @@ backend:
   # backend:
   name: git-gateway # Replace 'github' with your preferred backend provider
   branch: main # Branch to update (optional; defaults to master)
-
+  base_url: https://blog-decapcms-new.pages.dev/
 publish_mode: editorial_workflow
 
 # These lines should *not* be indented
