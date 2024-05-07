@@ -18,7 +18,7 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: 'Blog Name & Title add', name: 'title', widget: 'string' }
-      - name: categories2
+      - name: widgetcategories
         label: Categories
         widget: categories
         separator: __
