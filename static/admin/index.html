@@ -8,74 +8,65 @@
   <link rel="stylesheet" href="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.css">
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <style>
-    .two-column {
+    .two-column-widget {
       display: flex;
       justify-content: space-between;
     }
     .column {
       width: 48%;
     }
-    .two-column-widget {
-  display: flex;
-  justify-content: space-between;
-}
-
-.column {
-  width: 48%;
-}
   </style>
 </head>
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-    // Define the custom CategoriesControl widget with a two-column structure
+    // Custom Two-Column Widget
     const TwoColumnControl = createClass({
-  render() {
-    const { value = {}, onChange, forID } = this.props;
+      render() {
+        const { value = {}, onChange, forID } = this.props;
 
-    const handleChange = (column, newValue) => {
-      onChange({ ...value, [column]: newValue });
-    };
+        const handleChange = (column, newValue) => {
+          onChange({ ...value, [column]: newValue });
+        };
 
-    return h('div', { className: 'two-column-widget' },
-      h('div', { className: 'column' },
-        h('p', {}, 'First Column Content:'),
-        CMS.getWidget('markdown').control({
-          value: value.column1,
-          onChange: (v) => handleChange('column1', v),
-          forID: `${forID}-col1`,
-        })
-      ),
-      h('div', { className: 'column' },
-        h('p', {}, 'Second Column Content:'),
-        CMS.getWidget('image').control({
-          value: value.column2,
-          onChange: (v) => handleChange('column2', v),
-          forID: `${forID}-col2`,
-        })
-      )
-    );
-  },
-});
+        return h('div', { className: 'two-column-widget' },
+          h('div', { className: 'column' },
+            CMS.getWidget('markdown').control({
+              value: value.column1,
+              onChange: (v) => handleChange('column1', v),
+              forID: `${forID}-col1`,
+            })
+          ),
+          h('div', { className: 'column' },
+            CMS.getWidget('image').control({
+              value: value.column2,
+              onChange: (v) => handleChange('column2', v),
+              forID: `${forID}-col2`,
+            })
+          )
+        );
+      },
+    });
 
-const TwoColumnPreview = createClass({
-  render() {
-    const { value = {} } = this.props;
-    return h('div', { className: 'two-column-widget-preview' },
-      h('div', { className: 'column' },
-        CMS.getWidget('markdown').preview({ value: value.column1 })
-      ),
-      h('div', { className: 'column' },
-        CMS.getWidget('image').preview({ value: value.column2 })
-      )
-    );
-  },
-});
+    const TwoColumnPreview = createClass({
+      render() {
+        const { value = {} } = this.props;
+        return h('div', { className: 'two-column-widget-preview' },
+          h('div', { className: 'column' },
+            CMS.getWidget('markdown').preview({ value: value.column1 })
+          ),
+          h('div', { className: 'column' },
+            CMS.getWidget('image').preview({ value: value.column2 })
+          )
+        );
+      },
+    });
 
-CMS.registerWidget('two-column', TwoColumnControl, TwoColumnPreview);
+    // Register the Two-Column Widget
+    CMS.registerWidget('two-column', TwoColumnControl, TwoColumnPreview);
 
-    // Set up Netlify Identity initialization and login behavior
+    // Netlify Identity Initialization
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
