@@ -32,16 +32,14 @@
     var value = this.props.value;
     return h("div", {
         children: h("input", {
-            onChange: () => this.handleChange()
+            onChange: this.handleChange,
+            className : this.props.classNameWrapper,
+            id: this.props.forID,
+            type: 'text',
+            value: value ? value.join(separator) : '',
         })
     });
-    // h('input', {
-    //   id: this.props.forID,
-    //   className: this.props.classNameWrapper,
-    //   type: 'text',
-    //   value: value ? value.join(separator) : '',
-    //   onChange: this.handleChange,
-    // });
+
   },
 });
 
