@@ -107,7 +107,7 @@ export async function GET({ url, locals }) {
     alert(
         "Invalid OAuth client"
     );
-    throw error(500, 'Environment variables for GitHub OAuth are not set');
+    throw error(504, 'Environment variables for GitHub OAuth are not set');
   }
 
   try {
@@ -152,6 +152,6 @@ export async function GET({ url, locals }) {
 
   } catch (err) {
     console.error('Error handling OAuth callback:', err);
-    throw error(500, 'Internal Server Error');
+    throw error(505, 'Internal Server Error');
   }
 }

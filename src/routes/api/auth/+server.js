@@ -37,7 +37,7 @@ export async function GET({ url, locals }) {
   //const client_id = env.GITHUB_CLIENT_ID; // Ensure env vars are accessible
   const client_id = "Ov23lixAa7I0xBJ7v86Q"; // Ensure env vars are accessible
   if (!client_id) {
-    throw error(500, 'GITHUB_CLIENT_ID is not set');
+    throw error(503, 'GITHUB_CLIENT_ID is not set');
   }
 
   try {
