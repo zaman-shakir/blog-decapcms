@@ -1,5 +1,6 @@
 ---
-title: Changed How Crypto Payments Are Changing Up the Freelance Space in 2023
+title: "Breaking News:  How Crypto Payments Are Changing Up the Freelance Space
+  in 2023"
 date: 2023-10-26
 updated: 2023-10-26
 categories:
