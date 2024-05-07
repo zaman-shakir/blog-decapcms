@@ -18,7 +18,6 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: 'Blog Name & Title add', name: 'title', widget: 'string' }
-      - { label: 'Two Column Widget', name: 'two_column_widget', widget: 'two-column' }
       - { label: 'date', name: 'date', widget: 'datetime' }
       - { label: 'updated', name: 'updated', widget: 'datetime' }
       - {

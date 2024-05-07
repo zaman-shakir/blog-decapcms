@@ -22,49 +22,49 @@
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
     // Custom Two-Column Widget
-    const TwoColumnControl = createClass({
-      render() {
-        const { value = {}, onChange, forID } = this.props;
+    // const TwoColumnControl = createClass({
+    //   render() {
+    //     const { value = {}, onChange, forID } = this.props;
 
-        const handleChange = (column, newValue) => {
-          onChange({ ...value, [column]: newValue });
-        };
+    //     const handleChange = (column, newValue) => {
+    //       onChange({ ...value, [column]: newValue });
+    //     };
 
-        return h('div', { className: 'two-column-widget' },
-          h('div', { className: 'column' },
-            CMS.getWidget('markdown').control({
-              value: value.column1,
-              onChange: (v) => handleChange('column1', v),
-              forID: `${forID}-col1`,
-            })
-          ),
-          h('div', { className: 'column' },
-            CMS.getWidget('image').control({
-              value: value.column2,
-              onChange: (v) => handleChange('column2', v),
-              forID: `${forID}-col2`,
-            })
-          )
-        );
-      },
-    });
+    //     return h('div', { className: 'two-column-widget' },
+    //       h('div', { className: 'column' },
+    //         CMS.getWidget('markdown').control({
+    //           value: value.column1,
+    //           onChange: (v) => handleChange('column1', v),
+    //           forID: `${forID}-col1`,
+    //         })
+    //       ),
+    //       h('div', { className: 'column' },
+    //         CMS.getWidget('image').control({
+    //           value: value.column2,
+    //           onChange: (v) => handleChange('column2', v),
+    //           forID: `${forID}-col2`,
+    //         })
+    //       )
+    //     );
+    //   },
+    // });
 
-    const TwoColumnPreview = createClass({
-      render() {
-        const { value = {} } = this.props;
-        return h('div', { className: 'two-column-widget-preview' },
-          h('div', { className: 'column' },
-            CMS.getWidget('markdown').preview({ value: value.column1 })
-          ),
-          h('div', { className: 'column' },
-            CMS.getWidget('image').preview({ value: value.column2 })
-          )
-        );
-      },
-    });
+    // const TwoColumnPreview = createClass({
+    //   render() {
+    //     const { value = {} } = this.props;
+    //     return h('div', { className: 'two-column-widget-preview' },
+    //       h('div', { className: 'column' },
+    //         CMS.getWidget('markdown').preview({ value: value.column1 })
+    //       ),
+    //       h('div', { className: 'column' },
+    //         CMS.getWidget('image').preview({ value: value.column2 })
+    //       )
+    //     );
+    //   },
+    // });
 
-    // Register the Two-Column Widget
-    CMS.registerWidget('two-column', TwoColumnControl, TwoColumnPreview);
+    // // Register the Two-Column Widget
+    // CMS.registerWidget('two-column', TwoColumnControl, TwoColumnPreview);
 
     // Netlify Identity Initialization
     if (window.netlifyIdentity) {
